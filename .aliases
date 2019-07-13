@@ -66,8 +66,8 @@ alias weather="curl wttr.in"
 alias ytmp4="youtube-dl -f mp4"
 
 # VS Code
-alias vsc="code ."
 alias co="code ."
+alias cor="code . -r"
 
 #zsh
 alias reload="source ~/.zshrc"
