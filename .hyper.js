@@ -3,6 +3,9 @@ module.exports = {
      // set to false for no bell
     bell: "SOUND",
 
+    // confirmation dialog when quitting hyper
+    confirmQuit: true,
+
     // if true, selected text will automatically be copied to the clipboard
     copyOnSelect: false,
 
@@ -51,7 +54,8 @@ module.exports = {
     "hyperterm-paste",
     "hyperline",
     "hyper-dark-scrollbar",
-    "hyper-cobalt-next"
+    "hyper-cobalt-next",
+    "hyper-confirm"
   ],
 
   // in development, you can create a directory under
