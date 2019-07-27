@@ -1,6 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
- export PATH=/Applications/MAMP/bin/php/php7.2.1/bin:$PATH
+export PATH=/Applications/MAMP/bin/php/php7.2.1/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/leiningd/.oh-my-zsh
@@ -32,8 +32,6 @@ function precmd () {
   window_title="\033]0;✝ ${PWD/$HOME/~}\007"
   echo -ne "$window_title"
 }
-
-
 
 # Uncomment the following line to enable command auto-correction.
 # ENABLE_CORRECTION="true"
@@ -95,3 +93,6 @@ source $HOME/.aliases
 #
 # Get (mostly git) Functions
 source $HOME/.functions
+
+# gets rid of % when each hyper window is opened
+unsetopt PROMPT_SP
