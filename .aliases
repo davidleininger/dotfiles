@@ -59,8 +59,8 @@ alias nd="netlify dev"
 # start screensaver
 alias afk="open -a /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app"
 
-# get current weather
-alias weather="curl wttr.in"
+# run teams/save battery
+alias teams="/Applications/Microsoft\ Teams.app/Contents/MacOS/Teams --disable-gpu &"
 
 # youtube-dl as mp4
 alias ytmp4="youtube-dl -f mp4"
