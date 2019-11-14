@@ -62,3 +62,10 @@ function copy() {
 function dump() {
   node ~/local-git/dotfiles/scripts/emptyTrash.js
 }
+
+# fix n notifications
+function fixn() {
+  sudo /usr/libexec/ApplicationFirewall/socketfilterfw --remove $(which node)
+  sudo codesign --force --sign - $(which node)
+  sudo /usr/libexec/ApplicationFirewall/socketfilterfw --add $(which node)
+}
