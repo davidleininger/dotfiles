@@ -71,3 +71,4 @@ alias cor="code . -r"
 
 #zsh
 alias reload="source ~/.zshrc"
+alias aa="cat ~/.aliases"

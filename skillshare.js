@@ -1,5 +1,5 @@
 // FIRST STEP
-let courseTitle = document.querySelector('.class-details-header-title h2').innerHTML;
+let courseTitle = document.querySelector('.class-details-header-name').innerHTML;
 let video = document.getElementById('vjs_video_3_html5_api').getAttribute('src');
 let sessions = Array.from(document.querySelectorAll('.session-item'));
 let courseList = [];
