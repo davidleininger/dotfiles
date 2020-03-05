@@ -29,3 +29,8 @@
 	# Delete any branches that have been merged into master
 	# See also: https://gist.github.com/robmiller/5133264
 	cleanup = !git co master && git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
