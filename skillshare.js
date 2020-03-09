@@ -20,7 +20,7 @@ async function getVideos () {
   return vids;
 }
 
-for (let i = 0; i < 3; i++) {
+for (let i = 0; i < sessions.length; i++) {
   setTimeout(function timer() {
     sessions[i].click();
     setTimeout(function timer() {
