@@ -50,13 +50,11 @@ module.exports = {
     "hyper-alt-click",
     "hyperterm-paste",
     "hyperline",
-    "hyper-dark-scrollbar",
     "hyper-cobalt-next-dark"
   ],
 
   // in development, you can create a directory under
   // `~/.hyper_plugins/local/` and include it here
   // to load it and avoid it being `npm install`ed
-  localPlugins: [
-  ]
+  localPlugins: []
 };
