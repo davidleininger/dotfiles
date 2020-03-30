@@ -7,7 +7,6 @@ alias ltr="ls -ltr"
 alias vi=vim # prefer vim to vi
 alias rm=trash # safer deleting using trash-cli
 alias please=sudo # nicer sudo
-alias resource="source ~/.zshrc"
 alias ip="getip" # shorter alias for getip() function in .functions setup
 alias bbd="brew bundle dump --force" # homebrew bundle
 alias ..="cd .."
@@ -71,5 +70,6 @@ alias co="code ."
 alias cor="code . -r"
 
 #zsh
+alias resource="source ~/.zshrc"
 alias reload="source ~/.zshrc"
 alias aa="cat ~/.aliases"
