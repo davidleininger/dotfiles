@@ -2,6 +2,8 @@
   path = .gitconfig-wwt
 [includeIf "gitdir:~/local-git/"]
   path = .gitconfig-dl
+[init]
+	templateDir = ~/.config/git/template/
 [credential]
   helper = osxkeychain
 [alias]
