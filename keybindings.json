@@ -121,8 +121,8 @@
     "key": "cmd+enter"
   },
   {
-    "key": "cmd+m",
-    "command": "editor.emmet.action.wrapWithAbbreviation"
+    "key": "cmd+k cmd+g",
+    "command": "gitlens.toggleFileBlame"
   },
   /**
   * General Stuff
@@ -134,5 +134,29 @@
   {
     "key": "ctrl+alt+cmd+v",
     "command": "vetur.generateGrammar"
+  },
+  {
+    "key": "cmd+k cmd+z",
+    "command": "workbench.action.toggleSidebarVisibility"
+  },
+  {
+    "key": "cmd+k cmd+b",
+    "command": "-workbench.action.toggleSidebarVisibility"
+  },
+  {
+    "key": "cmd+k cmd+b",
+    "command": "-workbench.action.toggleSidebarVisibility"
+  },
+  {
+    "key": "cmd+k cmd+b",
+    "command": "-workbench.action.toggleSidebarVisibility"
+  },
+  {
+    "key": "cmd+k cmd+b",
+    "command": "-workbench.action.toggleSidebarVisibility"
+  },
+  {
+    "key": "cmd+k cmd+b",
+    "command": "-workbench.action.toggleSidebarVisibility"
   }
 ]
