@@ -13,6 +13,7 @@ ln -sf "$DOTFILES_DIR/Brewfile" ~
 ln -sf "$DOTFILES_DIR/.gitconfig" ~
 ln -sf "$DOTFILES_DIR/.gitconfig-dl" ~
 ln -sf "$DOTFILES_DIR/.gitconfig-wwt" ~
+ln -sf "$DOTFILES_DIR/git" ~/.config
 ln -sf "$DOTFILES_DIR/.gitignore_global" ~
 ln -sf "$DOTFILES_DIR/.hyper.js" ~
 ln -sf "$DOTFILES_DIR/.zshrc" ~
