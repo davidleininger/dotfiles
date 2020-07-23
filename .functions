@@ -23,6 +23,14 @@ function pull_and_merge_master() {
   git merge master
 }
 
+function pull_and_merge_main() {
+  local current_branch="$(git_current_branch)"
+  git checkout main
+  git pull
+  git checkout $current_branch
+  git merge main
+}
+
 function publish_current_branch() {
   local current_branch="$(git_current_branch)"
   git push --set-upstream origin $current_branch:$current_branch
