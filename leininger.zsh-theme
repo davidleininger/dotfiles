@@ -11,6 +11,8 @@
 
 CURRENT_BG='NONE'
 SEGMENT_SEPARATOR=''
+RIGHT_SEG_SEP='\uE0B2'
+package_path="."
 
 # Begin a segment
 # Takes two arguments, background and foreground. Both can be omitted,
@@ -28,6 +30,13 @@ prompt_segment() {
   fi
   CURRENT_BG=$1
   [[ -n $3 ]] && echo -n $3
+}
+
+# Node Version
+prompt_node() {
+  if [ -f ./package.json ]; then
+    echo -n " %{$fg[black]%}$RIGHT_SEG_SEP%{$bg[black]%} %{$fg[green]%}$(node -v) "
+  fi
 }
 
 # End the prompt, closing any open segments
@@ -100,3 +109,4 @@ build_prompt() {
 }
 
 PROMPT='%{%f%b%k%}$(build_prompt) '
+RPROMPT=' $(prompt_node)'
