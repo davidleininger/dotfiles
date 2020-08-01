@@ -100,6 +100,16 @@
     "command": "workbench.action.focusActiveEditorGroup",
     "when": "terminalFocus"
   },
+  {
+    "key": "alt+cmd+right",
+    "command": "workbench.action.terminal.focusNext",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "alt+cmd+left",
+    "command": "workbench.action.terminal.focusPrevious",
+    "when": "terminalFocus"
+  }
    /**
   * Coding Stuff
   **/
@@ -127,6 +137,10 @@
   /**
   * General Stuff
   **/
+  {
+    "key": "cmd+e cmd+e",
+    "command": "workbench.action.focusActiveEditorGroup"
+  },
   {
     "key": "cmd+k cmd+r",
     "command": "workbench.action.reloadWindow",
