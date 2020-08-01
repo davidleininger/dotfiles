@@ -1,6 +1,6 @@
 module.exports = {
   config: {
-     // set to false for no bell
+    // set to false for no bell
     bell: "SOUND",
 
     // if true, selected text will automatically be copied to the clipboard
@@ -24,7 +24,7 @@ module.exports = {
     // Clicking on them Links
     hyperlinks: {
       clickAction: "open",
-      defaultBrowser: true
+      defaultBrowser: true,
     },
 
     // custom padding (css format, i.e.: `top right bottom left`)
@@ -38,7 +38,7 @@ module.exports = {
     shellArgs: ["--login"],
 
     // The update channel to receive updates from
-    updateChannel: 'canary',
+    updateChannel: "canary",
     webGLRenderer: false,
   },
 
@@ -50,11 +50,11 @@ module.exports = {
     "hyper-alt-click",
     "hyperterm-paste",
     "hyperline",
-    "hyper-cobalt-next-dark"
+    "hyper-cobalt-next-dark",
   ],
 
   // in development, you can create a directory under
   // `~/.hyper_plugins/local/` and include it here
   // to load it and avoid it being `npm install`ed
-  localPlugins: []
+  localPlugins: [],
 };
