@@ -35,7 +35,7 @@ prompt_segment() {
 # Node Version
 prompt_node() {
   if [ -f ./package.json ]; then
-    echo -n " %{$fg[black]%}$RIGHT_SEG_SEP%{$bg[black]%} %{$fg[green]%}$(node -v) "
+    echo -n " %{$fg[black]%}$RIGHT_SEG_SEP%{$bg[black]%} %{$fg[green]%}$(node -v) %{$reset_color%}"
   fi
 }
 
