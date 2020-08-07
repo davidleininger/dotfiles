@@ -183,4 +183,9 @@
     "key": "ctrl+alt+cmd+v",
     "command": "vetur.generateGrammar"
   },
+  {
+    "key": "shift+cmd+k shift+cmd+b",
+    "command": "editor.action.setSelectionAnchor",
+    "when": "editorTextFocus"
+  }
 ]
