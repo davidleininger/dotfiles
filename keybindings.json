@@ -1,8 +1,8 @@
 // Place your key bindings in this file to overwrite the defaults
 [
-  /**
-  * Activity Bar
-  **/
+  /***
+    Activity Bar
+  ***/
   {
     "key": "cmd+k cmd+a",
     "command": "workbench.action.toggleActivityBarVisibility"
@@ -33,30 +33,28 @@
     "command": "workbench.action.previousSideBarView",
     "when": "sideBarFocus"
   },
-  /**
-  * Tab Bar
-  **/
+  /***
+    Layout
+  ***/
+  {
+    "key": "cmd+k cmd+b",
+    "command": "workbench.action.toggleSidebarVisibility"
+  },
   {
     "key": "cmd+k cmd+t",
     "command": "workbench.action.toggleTabsVisibility"
   },
-  /**
-  * Status Bar
-  **/
   {
     "key": "cmd+k cmd+s",
     "command": "workbench.action.toggleStatusbarVisibility"
   },
-  /**
-  * Mini Map
-  **/
   {
     "key": "cmd+k cmd+]",
     "command": "editor.action.toggleMinimap"
   },
-  /**
-  * File Explorer
-  **/
+  /***
+    File Explorer
+  ***/
   {
     "key": "cmd+d",
     "command": "duplicate.execute",
@@ -77,16 +75,16 @@
     "command": "workbench.files.action.refreshFilesExplorer",
     "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus"
   },
-  /**
-  * Theme Building
-  **/
+  /***
+    Theme Building
+  ***/
   {
     "key": "ctrl+alt+cmd+i",
     "command": "editor.action.inspectTMScopes"
   },
-   /**
-  * Terminal Stuff
-  **/
+  /***
+    Terminal Stuff
+  ***/
   {
     "key": "cmd+t",
     "command": "workbench.action.terminal.toggleTerminal"
@@ -109,22 +107,58 @@
     "key": "alt+cmd+left",
     "command": "workbench.action.terminal.focusPrevious",
     "when": "terminalFocus"
-  }
-   /**
-  * Coding Stuff
-  **/
+  },
+  /***
+    Coding Stuff
+  ***/
   {
     "key": "cmd+l",
     "command": "console.log.wrap.down.prefix",
     "when": "editorTextFocus"
   },
+
+  /***
+    Emmet
+  ***/
   {
-    "key": "cmd+m",
-    "command": "editor.emmet.action.wrapWithAbbreviation"
+    "key": "cmd+m cmd+i",
+    "command": "editor.emmet.action.balanceIn",
+    "when": "editorTextFocus"
   },
-   /**
-  * Git Stuff
-  **/
+  {
+    "key": "cmd+m cmd+o",
+    "command": "editor.emmet.action.balanceOut",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "cmd+m cmd+w",
+    "command": "editor.emmet.action.wrapWithAbbreviation",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "cmd+m cmd+m",
+    "command": "editor.emmet.action.matchTag",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "cmd+m cmd+e",
+    "command": "editor.action.smartSelect.expand",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "cmd+m cmd+r",
+    "command": "editor.emmet.action.updateTag",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "cmd+m cmd+backspace",
+    "command": "editor.emmet.action.removeTag",
+    "when": "editorTextFocus"
+  },
+
+  /***
+    Git Stuff
+  ***/
   {
     "command": "git.commit",
     "when": "activeViewlet == 'workbench.view.scm'",
@@ -134,9 +168,9 @@
     "key": "cmd+k cmd+g",
     "command": "gitlens.toggleFileBlame"
   },
-  /**
-  * General Stuff
-  **/
+  /***
+    General Stuff
+  ***/
   {
     "key": "cmd+e cmd+e",
     "command": "workbench.action.focusActiveEditorGroup"
@@ -149,28 +183,4 @@
     "key": "ctrl+alt+cmd+v",
     "command": "vetur.generateGrammar"
   },
-  {
-    "key": "cmd+k cmd+z",
-    "command": "workbench.action.toggleSidebarVisibility"
-  },
-  {
-    "key": "cmd+k cmd+b",
-    "command": "-workbench.action.toggleSidebarVisibility"
-  },
-  {
-    "key": "cmd+k cmd+b",
-    "command": "-workbench.action.toggleSidebarVisibility"
-  },
-  {
-    "key": "cmd+k cmd+b",
-    "command": "-workbench.action.toggleSidebarVisibility"
-  },
-  {
-    "key": "cmd+k cmd+b",
-    "command": "-workbench.action.toggleSidebarVisibility"
-  },
-  {
-    "key": "cmd+k cmd+b",
-    "command": "-workbench.action.toggleSidebarVisibility"
-  }
 ]
