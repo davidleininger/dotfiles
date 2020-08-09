@@ -45,12 +45,63 @@
     "command": "workbench.action.toggleTabsVisibility"
   },
   {
-    "key": "cmd+k cmd+s",
+    "key": "cmd+k cmd+z",
     "command": "workbench.action.toggleStatusbarVisibility"
   },
   {
     "key": "cmd+k cmd+]",
     "command": "editor.action.toggleMinimap"
+  },
+  {
+    "key": "cmd+k cmd+-",
+    "command": "workbench.action.closePanel"
+  },
+  /***
+    Toggle Font Size
+  ***/
+  {
+    "key": "cmd+k cmd+k",
+    "command": "toggle",
+    "when": "editorTextFocus",
+    "args": {
+      "id": "fontSize",
+      "value": [
+        {
+          "editor.fontSize": 28,
+          "editor.lineHeight": 36
+        },
+        {
+          "editor.fontSize": 15,
+          "editor.lineHeight": 24,
+        }
+      ]
+    }
+  },
+  /***
+    Fold/Unfold
+  ***/
+  {
+    "key": "shift+cmd+[",
+    "command": "editor.fold",
+    "when": "editorFocus"
+  },
+  {
+    "key": "shift+cmd+]",
+    "command": "editor.unfold",
+    "when": "editorFocus"
+  },
+  /***
+    Line Manipulation
+  ***/
+  {
+    "key": "cmd+l",
+    "command": "editor.action.copyLinesDownAction",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "cmd+j",
+    "command": "editor.action.joinLines",
+    "when": "editorTextFocus"
   },
   /***
     File Explorer
@@ -74,6 +125,24 @@
     "key": "cmd+r",
     "command": "workbench.files.action.refreshFilesExplorer",
     "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus"
+  },
+  /***
+    Multi-Cursor
+  ***/
+  {
+    "key": "cmd+backspace",
+    "command": "editor.action.moveSelectionToPreviousFindMatch",
+    "when": "edditorFocus && editorHasMultipleSelections"
+  },
+  {
+    "key": "cmd+k cmd+d",
+    "command": "editor.action.moveSelectionToNextFindMatch",
+    "when": "edditorFocus && editorHasMultipleSelections"
+  },
+  {
+    "key": "cmd+right",
+    "command": "editor.action.insertCursorAtEndOfEachLineSelected",
+    "when": "edditorFocus && editorHasMultipleSelections"
   },
   /***
     Theme Building
@@ -112,7 +181,7 @@
     Coding Stuff
   ***/
   {
-    "key": "cmd+l",
+    "key": "shift+alt+d",
     "command": "console.log.wrap.down.prefix",
     "when": "editorTextFocus"
   },
