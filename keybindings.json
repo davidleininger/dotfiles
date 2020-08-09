@@ -53,8 +53,9 @@
     "command": "editor.action.toggleMinimap"
   },
   {
-    "key": "cmd+k cmd+-",
-    "command": "workbench.action.closePanel"
+    "key": "escape",
+    "command": "workbench.action.closePanel",
+    "when": "panelFocus"
   },
   /***
     Toggle Font Size
@@ -67,11 +68,11 @@
       "id": "fontSize",
       "value": [
         {
-          "editor.fontSize": 28,
+          "editor.fontSize": 22,
           "editor.lineHeight": 36
         },
         {
-          "editor.fontSize": 15,
+          "editor.fontSize": 14,
           "editor.lineHeight": 24,
         }
       ]
@@ -256,5 +257,13 @@
     "key": "shift+cmd+k shift+cmd+b",
     "command": "editor.action.setSelectionAnchor",
     "when": "editorTextFocus"
+  },
+  /***
+    Hide Toast Notification
+  ***/
+  {
+    "key": "escape",
+    "command": "notifications.hideToasts",
+    "when": "notificationToastVisible"
   }
 ]
