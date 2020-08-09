@@ -19,7 +19,7 @@ module.exports = {
     fontSize: 16,
 
     // font family with optional fallbacks
-    fontFamily: '"Operator Mono", "Inconsolata for Powerline", monospace',
+    fontFamily: '"Inconsolata NF", monospace',
 
     // Clicking on them Links
     hyperlinks: {
