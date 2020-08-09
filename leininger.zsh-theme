@@ -80,7 +80,7 @@ prompt_node() {
         echo -n " %{$fg[black]%}$RIGHT_SEG_SEP%{$bg[black]%} %{$fg[yellow]%}$node_version %{$fg[green]%}| n$nvm %{$reset_color%}"
       fi
     else
-      echo -n " %{$fg[black]%}$RIGHT_SEG_SEP%{$bg[black]%} %{$fg[yellow]%}$node_version %{$reset_color%}"
+      echo -n " %{$fg[black]%}$RIGHT_SEG_SEP%{$bg[black]%} %{$fg[green]%}$node_version %{$reset_color%}"
     fi
   fi
 }
