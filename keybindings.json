@@ -53,9 +53,8 @@
     "command": "editor.action.toggleMinimap"
   },
   {
-    "key": "escape",
-    "command": "workbench.action.closePanel",
-    "when": "panelFocus"
+    "key": "cmd+k cmd+-",
+    "command": "workbench.action.closePanel"
   },
   /***
     Toggle Font Size
@@ -73,7 +72,7 @@
         },
         {
           "editor.fontSize": 14,
-          "editor.lineHeight": 24,
+          "editor.lineHeight": 24
         }
       ]
     }
@@ -247,7 +246,7 @@
   },
   {
     "key": "cmd+k cmd+r",
-    "command": "workbench.action.reloadWindow",
+    "command": "workbench.action.reloadWindow"
   },
   {
     "key": "ctrl+alt+cmd+v",
