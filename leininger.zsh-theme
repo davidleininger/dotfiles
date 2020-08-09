@@ -11,7 +11,7 @@
 
 CURRENT_BG='NONE'
 SEGMENT_SEPARATOR=''
-RIGHT_SEG_SEP='\uE0B2'
+RIGHT_SEG_SEP=''
 package_path="."
 
 # Begin a segment
@@ -34,7 +34,7 @@ prompt_segment() {
 
 # Node Version
 prompt_node() {
-  local engine nvm repo_path package_path has_package e_cat
+  local engine nvm repo_path package_path
 
   # Get the path of the Git repo, which should have the package.json file
   if repo_path=$(git rev-parse --git-dir 2>/dev/null); then
@@ -55,32 +55,32 @@ prompt_node() {
     engine=${$( jq -e '.engines.node' < "$package_path/package.json")//\"}
   fi
   if [[ -a $package_path/.nvmrc ]]; then
-    nvm=${$(cat .nvmrc)//v}
+    nvm=${$(cat .nvmrc)}
   fi
 
   if [[ -a $package_path/package.json || -a $package_path/.nvmrc ]]; then
     if [[ "$engine" != null && "$nvm" != null && "$nvm" != '' ]]; then
-      if [[ "$node_version" != "$nvm" ]]; then
-        echo -n " %{$fg[black]%}$RIGHT_SEG_SEP%{$bg[black]%} %{$fg[yellow]%}$node_version %{$fg[green]%}| n$nvm %{$reset_color%}"
-      elif [[ "$node_version" != "$engine" ]]; then
-        echo -n " %{$fg[black]%}$RIGHT_SEG_SEP%{$bg[black]%} %{$fg[yellow]%}$node_version %{$fg[green]%}| e$engine %{$reset_color%}"
+      if [[ "$nvm" != *"$node_version"* ]]; then
+        echo -n " %{$fg[black]%}$RIGHT_SEG_SEP%{$bg[black]%}%{$fg[yellow]%}  $node_version %{$fg[green]%}| $nvm %{$reset_color%}"
+      elif [[ "$engine" != *"$node_version"* ]]; then
+        echo -n " %{$fg[black]%}$RIGHT_SEG_SEP%{$bg[black]%}%{$fg[yellow]%}  $node_version %{$fg[green]%}| $engine %{$reset_color%}"
       else
-        echo -n " %{$fg[black]%}$RIGHT_SEG_SEP%{$bg[black]%} %{$fg[green]%}$node_version %{$reset_color%}"
+        echo -n " %{$fg[green]%}$RIGHT_SEG_SEP%{$bg[green]%}%{$fg[black]%}  $node_version %{$reset_color%}"
       fi
     elif [[ "$engine" != null ]]; then
-      if [[ "$engine" == "$node_version" ]]; then
-        echo -n " %{$fg[black]%}$RIGHT_SEG_SEP%{$bg[black]%} %{$fg[green]%}$node_version %{$reset_color%}"
+      if [[ "$engine" == *"$node_version"* ]]; then
+        echo -n " %{$fg[green]%}$RIGHT_SEG_SEP%{$bg[green]%}%{$fg[black]%}  $node_version %{$reset_color%}"
       else
-        echo -n " %{$fg[black]%}$RIGHT_SEG_SEP%{$bg[black]%} %{$fg[yellow]%}$node_version %{$fg[green]%}| e$engine %{$reset_color%}"
+        echo -n " %{$fg[black]%}$RIGHT_SEG_SEP%{$bg[black]%}%{$fg[yellow]%}  $node_version %{$fg[green]%}| $engine %{$reset_color%}"
       fi
     elif [[ "$nvm" != null && "$nvm" != '' ]]; then
-      if [[ "$nvm" == "$node_version" ]]; then
-        echo -n " %{$fg[black]%}$RIGHT_SEG_SEP%{$bg[black]%} %{$fg[green]%}$node_version %{$reset_color%}"
+      if [[ "$nvm" == *"$node_version"* ]]; then
+        echo -n " %{$fg[green]%}$RIGHT_SEG_SEP%{$bg[green]%}%{$fg[black]%}  $node_version %{$reset_color%}"
       else
-        echo -n " %{$fg[black]%}$RIGHT_SEG_SEP%{$bg[black]%} %{$fg[yellow]%}$node_version %{$fg[green]%}| n$nvm %{$reset_color%}"
+        echo -n " %{$fg[black]%}$RIGHT_SEG_SEP%{$bg[black]%}%{$fg[yellow]%}  $node_version %{$fg[green]%}| $nvm %{$reset_color%}"
       fi
     else
-      echo -n " %{$fg[black]%}$RIGHT_SEG_SEP%{$bg[black]%} %{$fg[green]%}$node_version %{$reset_color%}"
+      echo -n " %{$fg[green]%}$RIGHT_SEG_SEP%{$bg[green]%}%{$fg[black]%}  $node_version %{$reset_color%}"
     fi
   fi
 }
