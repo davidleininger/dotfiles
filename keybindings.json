@@ -1,18 +1,15 @@
 // Place your key bindings in this file to overwrite the defaults
 [
+
   /***
-    Activity Bar
+    Panels
   ***/
-  {
-    "key": "cmd+k cmd+a",
-    "command": "workbench.action.toggleActivityBarVisibility"
-  },
   {
     "key": "cmd+k cmd+e",
     "command": "workbench.view.explorer"
   },
   {
-    "key": "cmd+k cmd+v",
+    "key": "cmd+k cmd+g",
     "command": "workbench.view.scm"
   },
   {
@@ -24,6 +21,42 @@
     "command": "workbench.extensions.action.showInstalledExtensions"
   },
   {
+    "key": "cmd+k cmd+b",
+    "command": "workbench.action.toggleSidebarVisibility"
+  },
+  {
+    "key": "cmd+e",
+    "command": "workbench.action.focusActiveEditorGroup"
+  },
+  {
+    "key": "cmd+t",
+    "command": "workbench.action.terminal.toggleTerminal"
+  },
+  {
+    "key": "cmd+k cmd+t",
+    "command": "workbench.action.toggleTabsVisibility"
+  },
+  {
+    "key": "cmd+k cmd+a",
+    "command": "workbench.action.toggleActivityBarVisibility"
+  },
+  {
+    "key": "cmd+k cmd+,",
+    "command": "workbench.action.toggleStatusbarVisibility"
+  },
+  {
+    "key": "cmd+;",
+    "command": "workbench.action.openRecent"
+  },
+  {
+    "key": "cmd+k cmd+-",
+    "command": "workbench.action.closePanel"
+  },
+
+  /***
+    Sidebar
+  ***/
+  {
     "key": "ctrl+]",
     "command": "workbench.action.nextSideBarView",
     "when": "sideBarFocus"
@@ -33,29 +66,7 @@
     "command": "workbench.action.previousSideBarView",
     "when": "sideBarFocus"
   },
-  /***
-    Layout
-  ***/
-  {
-    "key": "cmd+k cmd+b",
-    "command": "workbench.action.toggleSidebarVisibility"
-  },
-  {
-    "key": "cmd+k cmd+t",
-    "command": "workbench.action.toggleTabsVisibility"
-  },
-  {
-    "key": "cmd+k cmd+z",
-    "command": "workbench.action.toggleStatusbarVisibility"
-  },
-  {
-    "key": "cmd+k cmd+]",
-    "command": "editor.action.toggleMinimap"
-  },
-  {
-    "key": "cmd+k cmd+-",
-    "command": "workbench.action.closePanel"
-  },
+
   /***
     Toggle Font Size
   ***/
@@ -67,16 +78,17 @@
       "id": "fontSize",
       "value": [
         {
-          "editor.fontSize": 22,
-          "editor.lineHeight": 36
+          "editor.fontSize": 16,
+          "editor.lineHeight": 32
         },
         {
           "editor.fontSize": 14,
-          "editor.lineHeight": 24
+          "editor.lineHeight": 0
         }
       ]
     }
   },
+
   /***
     Fold/Unfold
   ***/
@@ -90,6 +102,7 @@
     "command": "editor.unfold",
     "when": "editorFocus"
   },
+
   /***
     Line Manipulation
   ***/
@@ -103,6 +116,7 @@
     "command": "editor.action.joinLines",
     "when": "editorTextFocus"
   },
+
   /***
     File Explorer
   ***/
@@ -126,24 +140,26 @@
     "command": "workbench.files.action.refreshFilesExplorer",
     "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus"
   },
+
   /***
     Multi-Cursor
   ***/
   {
     "key": "cmd+backspace",
     "command": "editor.action.moveSelectionToPreviousFindMatch",
-    "when": "edditorFocus && editorHasMultipleSelections"
+    "when": "editorFocus && editorHasMultipleSelections"
   },
   {
     "key": "cmd+k cmd+d",
     "command": "editor.action.moveSelectionToNextFindMatch",
-    "when": "edditorFocus && editorHasMultipleSelections"
+    "when": "editorFocus && editorHasMultipleSelections"
   },
   {
     "key": "cmd+right",
     "command": "editor.action.insertCursorAtEndOfEachLineSelected",
-    "when": "edditorFocus && editorHasMultipleSelections"
+    "when": "editorFocus && editorHasSelection"
   },
+
   /***
     Theme Building
   ***/
@@ -151,40 +167,65 @@
     "key": "ctrl+alt+cmd+i",
     "command": "editor.action.inspectTMScopes"
   },
+
   /***
-    Terminal Stuff
+    Split Panels
   ***/
   {
-    "key": "cmd+t",
-    "command": "workbench.action.terminal.toggleTerminal"
+    "key": "ctrl+w",
+    "command": "workbench.action.joinAllGroups",
+    "when": "editorFocus"
   },
   {
-    "key": "alt+=",
-    "command": "workbench.action.terminal.focus"
+    "key": "ctrl+n",
+    "command": "workbench.action.splitEditor",
+    "when": "editorFocus"
   },
   {
-    "key": "alt+=",
-    "command": "workbench.action.focusActiveEditorGroup",
-    "when": "terminalFocus"
+    "key": "ctrl+l",
+    "command": "workbench.action.navigateRight",
+    "when": "editorFocus"
   },
   {
-    "key": "alt+cmd+right",
-    "command": "workbench.action.terminal.focusNext",
-    "when": "terminalFocus"
+    "key": "ctrl+h",
+    "command": "workbench.action.navigateLeft",
+    "when": "editorFocus"
   },
   {
-    "key": "alt+cmd+left",
-    "command": "workbench.action.terminal.focusPrevious",
-    "when": "terminalFocus"
+    "key": "ctrl+=",
+    "command": "workbench.action.increaseViewSize",
+    "when": "editorFocus"
   },
+  {
+    "key": "ctrl+-",
+    "command": "workbench.action.decreaseViewSize",
+    "when": "editorFocus"
+  },
+
   /***
-    Coding Stuff
+    Terminal Split Panel
   ***/
   {
-    "key": "shift+alt+d",
-    "command": "console.log.wrap.down.prefix",
-    "when": "editorTextFocus"
+    "key": "ctrl+n",
+    "command": "workbench.action.terminal.split",
+    "when": "terminalFocus"
   },
+  {
+    "key": "ctrl+l",
+    "command": "workbench.action.terminal.focusNextPane",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+h",
+    "command": "workbench.action.terminal.focusPreviousPane",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+w",
+    "command": "workbench.action.terminal.kill",
+    "when": "terminalFocus"
+  },
+
 
   /***
     Emmet
@@ -233,30 +274,41 @@
     "when": "activeViewlet == 'workbench.view.scm'",
     "key": "cmd+enter"
   },
-  {
-    "key": "cmd+k cmd+g",
-    "command": "gitlens.toggleFileBlame"
-  },
+  // {
+  //   "key": "cmd+k cmd+g",
+  //   "command": "gitlens.toggleFileBlame"
+  // },
+
   /***
     General Stuff
   ***/
   {
-    "key": "cmd+e cmd+e",
-    "command": "workbench.action.focusActiveEditorGroup"
-  },
-  {
-    "key": "cmd+k cmd+r",
+    "key": "cmd+k cmd+z",
     "command": "workbench.action.reloadWindow"
   },
   {
     "key": "ctrl+alt+cmd+v",
     "command": "vetur.generateGrammar"
   },
+
+  /***
+    Coding Stuff
+  ***/
   {
-    "key": "shift+cmd+k shift+cmd+b",
-    "command": "editor.action.setSelectionAnchor",
+    "key": "shift+alt+d",
+    "command": "console.log.wrap.down.prefix",
     "when": "editorTextFocus"
   },
+
+
+  /***
+    Open Dev Tools
+  ***/
+  {
+    "key": "alt+cmd+i",
+    "command": "workbench.action.toggleDevTools"
+  },
+
   /***
     Hide Toast Notification
   ***/
@@ -264,5 +316,5 @@
     "key": "escape",
     "command": "notifications.hideToasts",
     "when": "notificationToastVisible"
-  }
+  },
 ]
