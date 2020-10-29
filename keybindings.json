@@ -49,6 +49,16 @@
     "command": "workbench.action.openRecent"
   },
   {
+    "command": "workbench.action.quickOpenNavigateNext",
+    "key": "cmd+;",
+    "when": "inQuickOpen"
+  },
+  {
+    "command": "workbench.action.quickOpenNavigatePrevious",
+    "key": "cmd+shift+;",
+    "when": "inQuickOpen"
+  },
+  {
     "key": "cmd+k cmd+-",
     "command": "workbench.action.closePanel"
   },
