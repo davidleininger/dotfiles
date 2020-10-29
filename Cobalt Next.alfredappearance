@@ -1,0 +1,61 @@
+{
+  "alfredtheme" : {
+    "result" : {
+      "textSpacing" : 6,
+      "subtext" : {
+        "size" : 11,
+        "colorSelected" : "#BFC4CEFF",
+        "font" : "Helvetica",
+        "color" : "#65737EFF"
+      },
+      "shortcut" : {
+        "size" : 16,
+        "colorSelected" : "#FAC863FF",
+        "font" : "Helvetica",
+        "color" : "#5FB3B3FF"
+      },
+      "backgroundSelected" : "#0F1C23FF",
+      "text" : {
+        "size" : 16,
+        "colorSelected" : "#FEFFFFFF",
+        "font" : "Helvetica",
+        "color" : "#D8DEE9FF"
+      },
+      "iconPaddingHorizontal" : 5,
+      "paddingVertical" : 6,
+      "iconSize" : 40
+    },
+    "search" : {
+      "paddingVertical" : 7,
+      "background" : "#0F1C2399",
+      "spacing" : 10,
+      "text" : {
+        "size" : 24,
+        "colorSelected" : "#FFFFFFFF",
+        "font" : "Helvetica",
+        "color" : "#5FB3B3FF"
+      },
+      "backgroundSelected" : "#343C46FF"
+    },
+    "window" : {
+      "color" : "#1B2B34F2",
+      "paddingHorizontal" : 10,
+      "width" : 615,
+      "borderPadding" : 16,
+      "borderColor" : "#0F1C2300",
+      "blur" : 0,
+      "roundness" : 5,
+      "paddingVertical" : 10
+    },
+    "credit" : "David Leininger",
+    "separator" : {
+      "color" : "#343C46FF",
+      "thickness" : 1
+    },
+    "scrollbar" : {
+      "color" : "#5FB3B3B2",
+      "thickness" : 2
+    },
+    "name" : "Cobalt Next"
+  }
+}
