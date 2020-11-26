@@ -88,8 +88,8 @@
       "id": "fontSize",
       "value": [
         {
-          "editor.fontSize": 16,
-          "editor.lineHeight": 32
+          "editor.fontSize": 17,
+          "editor.lineHeight": 34
         },
         {
           "editor.fontSize": 14,
