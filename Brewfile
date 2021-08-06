@@ -12,9 +12,7 @@ brew "zsh-autosuggestions"
 brew "zsh-syntax-highlighting"
 
 # # Brew Cask Installs
-# cask "airfoil"
 cask "alfred"
-# cask "aerial"
 cask "atext"
 cask "bartender"
 cask "bettertouchtool"
