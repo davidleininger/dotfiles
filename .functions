@@ -40,7 +40,7 @@ function pull_and_merge_default() {
   git checkout $default_branch
   git pull
   git checkout $current_branch
-  git merge master
+  git merge $default_branch
 }
 
 function merge_default() {
