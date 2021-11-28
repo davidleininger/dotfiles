@@ -63,7 +63,7 @@ alias afk="open -a /System/Library/Frameworks/ScreenSaver.framework/Versions/A/R
 alias teams="/Applications/Microsoft\ Teams.app/Contents/MacOS/Teams --disable-gpu &"
 
 # youtube-dl as mp4
-alias ytmp4="youtube-dl -f mp4"
+alias yt4="youtube-dl -f mp4"
 
 # VS Code
 alias co="code ."
