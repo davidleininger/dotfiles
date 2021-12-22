@@ -76,8 +76,14 @@ function getip() {
 }
 
 # Mac stuff
-function mkcd() {
-  mkdir -p "$1" && cd "$1";
+kill_port() {
+  lsof -nti:“$1” | xargs kill -9
+  Echo “$1 killed”
+}
+
+# Blue Steel Fun for WWT
+blue_steel_link() {
+  yarn link @blue-steel/$1
 }
 
 # I hate remembering syntax for copying to clipboard

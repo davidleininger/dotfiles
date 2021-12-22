@@ -65,6 +65,12 @@ alias teams="/Applications/Microsoft\ Teams.app/Contents/MacOS/Teams --disable-g
 # youtube-dl as mp4
 alias yt4="youtube-dl -f mp4"
 
+# kill port
+alias kp="kill_port"
+
+# Blue Steel at WWT
+alias bsl="blue_steel_link"
+
 # VS Code
 alias co="code ."
 alias cor="code . -r"
