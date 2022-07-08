@@ -15,6 +15,10 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias ......="cd ../../../../.."
 alias c-c="convert-color"
+alias cat=bat
+
+# Suffixes are rad
+alias -s {html,css,js}=code
 
 # Git
 alias g="git"
@@ -43,7 +47,7 @@ alias gpull="pull_origin_current_branch"
 alias gbam="delete_local_merged_branches"
 alias gbamr="delete_remote_merged_branches"
 alias gclean="delete_local_merged_branches && delete_remote_merged_branches"
-alias go="git open"
+alias gopen="git open"
 
 # NPM
 alias ni="npm install"
