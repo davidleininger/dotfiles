@@ -49,6 +49,16 @@
     "command": "workbench.action.openRecent"
   },
   {
+    "key": "cmd+;",
+    "command": "workbench.action.quickOpenNavigateNextInRecentFilesPicker",
+    "when": "inQuickOpen && inRecentFilesPicker"
+  },
+  {
+    "key": "cmd+shift+;",
+    "command": "workbench.action.quickOpenNavigatePreviousInRecentFilesPicker",
+    "when": "inQuickOpen && inRecentFilesPicker"
+  },
+  {
     "key": "cmd+k cmd+-",
     "command": "workbench.action.closePanel"
   },
@@ -316,5 +326,5 @@
     "key": "escape",
     "command": "notifications.hideToasts",
     "when": "notificationToastVisible"
-  },
+  }
 ]
