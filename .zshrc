@@ -3,7 +3,10 @@
 export PATH=/Applications/MAMP/bin/php/php7.2.1/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/leiningd/.oh-my-zsh
+export ZSH=/Users/davidleininger/.oh-my-zsh
+
+# Manually set npm's default directory.
+export PATH=~/.npm-global/bin:$PATH
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
