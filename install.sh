@@ -21,3 +21,6 @@ ln -sf "$DOTFILES_DIR/.zshrc" ~
 ln -sf "$DOTFILES_DIR/z.sh" ~
 ln -sf "$DOTFILES_DIR/leininger.zsh-theme" ~/.oh-my-zsh/custom/themes
 ln -sf "$DOTFILES_DIR/keybindings.json" ~/Library/Application\ Support/Code/User/keybindings.json
+
+# Makes the dock hide and show as fast as a greyhound
+defaults write com.apple.dock autohide-time-modifier -float 0.15;killall Dock
