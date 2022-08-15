@@ -61,26 +61,26 @@ prompt_node() {
   if [[ -a $package_path/package.json || -a $package_path/.nvmrc ]]; then
     if [[ "$engine" != null && "$nvm" != null && "$nvm" != '' ]]; then
       if [[ "$nvm" != *"$node_version"* ]]; then
-        echo -n " %{$fg[black]%}$RIGHT_SEG_SEP%{$bg[black]%}%{$fg[yellow]%}  $node_version %{$fg[green]%}| $nvm %{$reset_color%}"
+        echo -n " %{$fg[black]%}$RIGHT_SEG_SEP%{$bg[black]%}%{$fg[yellow]%}$node_version %{$fg[green]%}| $nvm %{$reset_color%}"
       elif [[ "$engine" != *"$node_version"* ]]; then
-        echo -n " %{$fg[black]%}$RIGHT_SEG_SEP%{$bg[black]%}%{$fg[yellow]%}  $node_version %{$fg[green]%}| $engine %{$reset_color%}"
+        echo -n " %{$fg[black]%}$RIGHT_SEG_SEP%{$bg[black]%}%{$fg[yellow]%}$node_version %{$fg[green]%}| $engine %{$reset_color%}"
       else
-        echo -n " %{$fg[green]%}$RIGHT_SEG_SEP%{$bg[green]%}%{$fg[black]%}  $node_version %{$reset_color%}"
+        echo -n " %{$fg[green]%}$RIGHT_SEG_SEP%{$bg[green]%}%{$fg[black]%}$node_version %{$reset_color%}"
       fi
     elif [[ "$engine" != null ]]; then
       if [[ "$engine" == *"$node_version"* ]]; then
-        echo -n " %{$fg[green]%}$RIGHT_SEG_SEP%{$bg[green]%}%{$fg[black]%}  $node_version %{$reset_color%}"
+        echo -n " %{$fg[green]%}$RIGHT_SEG_SEP%{$bg[green]%}%{$fg[black]%}$node_version %{$reset_color%}"
       else
-        echo -n " %{$fg[black]%}$RIGHT_SEG_SEP%{$bg[black]%}%{$fg[yellow]%}  $node_version %{$fg[green]%}| $engine %{$reset_color%}"
+        echo -n " %{$fg[black]%}$RIGHT_SEG_SEP%{$bg[black]%}%{$fg[yellow]%}$node_version %{$fg[green]%}| $engine %{$reset_color%}"
       fi
     elif [[ "$nvm" != null && "$nvm" != '' ]]; then
       if [[ "$nvm" == *"$node_version"* ]]; then
-        echo -n " %{$fg[green]%}$RIGHT_SEG_SEP%{$bg[green]%}%{$fg[black]%}  $node_version %{$reset_color%}"
+        echo -n " %{$fg[green]%}$RIGHT_SEG_SEP%{$bg[green]%}%{$fg[black]%}$node_version %{$reset_color%}"
       else
-        echo -n " %{$fg[black]%}$RIGHT_SEG_SEP%{$bg[black]%}%{$fg[yellow]%}  $node_version %{$fg[green]%}| $nvm %{$reset_color%}"
+        echo -n " %{$fg[black]%}$RIGHT_SEG_SEP%{$bg[black]%}%{$fg[yellow]%}$node_version %{$fg[green]%}| $nvm %{$reset_color%}"
       fi
     else
-      echo -n " %{$fg[green]%}$RIGHT_SEG_SEP%{$bg[green]%}%{$fg[black]%}  $node_version %{$reset_color%}"
+      echo -n " %{$fg[green]%}$RIGHT_SEG_SEP%{$bg[green]%}%{$fg[black]%}$node_version %{$reset_color%}"
     fi
   fi
 }
