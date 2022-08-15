@@ -72,7 +72,7 @@ function delete_remote_merged_branches() {
 
 # get current IP address
 function getip() {
-  node ~/local-git/dotfiles/scripts/getIp.js
+  node ~/dev/dotfiles/scripts/getIp.js
 }
 
 # Mac stuff
@@ -93,7 +93,7 @@ function copy() {
 
 # empty the trash
 function dump() {
-  node ~/local-git/dotfiles/scripts/emptyTrash.js
+  node ~/dev/dotfiles/scripts/emptyTrash.js
 }
 
 # fix n notifications
