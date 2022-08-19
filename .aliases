@@ -75,6 +75,9 @@ alias kp="kill_port"
 # Blue Steel at WWT
 alias bsl="blue_steel_link"
 
+# Figma Types
+alias figtypes="npm install --save-dev @figma/plugin-typings"
+
 # VS Code
 alias co="code ."
 alias cor="code . -r"
