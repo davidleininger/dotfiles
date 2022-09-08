@@ -134,7 +134,7 @@ defaults write com.apple.finder WarnOnEmptyTrash -bool false
 defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true
 
 # Show the ~/Library folder
-chflags nohidden ~/Library && xattr -d com.apple.FinderInfo ~/Library
+chflags nohidden ~/Library
 
 # Show the /Volumes folder
 sudo chflags nohidden /Volumes
@@ -153,7 +153,7 @@ defaults write com.apple.finder FXInfoPanesExpanded -dict \
 defaults write com.apple.dock autohide -bool true
 
 # Makes the dock hide and show as fast as a greyhound
-defaults write com.apple.dock autohide-time-modifier -float 0.15
+defaults write com.apple.dock autohide-time-modifier -float 0.05
 
 # Switch the minimize/zoom effect to scale
 defaults write com.apple.dock mineffect -string scale
