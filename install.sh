@@ -53,3 +53,6 @@ brew bundle
 # finally go back to dotfiles and npm install
 cd ~/dev/dotfiles
 npm install
+
+# reload zsh
+source ~/.zshrc
