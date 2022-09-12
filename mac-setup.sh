@@ -213,6 +213,7 @@ for app in "Dock" \
 	"Messages" \
 	"Safari" \
 	"SystemUIServer" \
+  "iTerm2" \
 	"Terminal"; do
 	killall "${app}" &> /dev/null
 done
