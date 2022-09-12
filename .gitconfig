@@ -1,7 +1,5 @@
-[includeIf "gitdir:~/wwt-git/"]
-  path = .gitconfig-wwt
-[includeIf "gitdir:~/local-git/"]
-  path = .gitconfig-dl
+[includeIf "gitdir:~/nyt/"]
+  path = .gitconfig-nyt
 [includeIf "gitdir:~/dev/"]
   path = .gitconfig-dl
 [init]
