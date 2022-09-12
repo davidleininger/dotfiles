@@ -99,3 +99,8 @@ source $HOME/.functions
 
 # gets rid of % when each hyper window is opened
 unsetopt PROMPT_SP
+
+# fnm
+export PATH=/Users/davidleininger/.fnm:$PATH
+eval "`fnm env`"
+# eval "$(fnm env --use-on-cd)"
