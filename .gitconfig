@@ -2,6 +2,8 @@
   path = .gitconfig-nyt
 [includeIf "gitdir:~/dev/"]
   path = .gitconfig-dl
+[include]
+  path = .gitconfig.local
 [init]
 	templateDir = ~/.config/git/template/
 [credential]
