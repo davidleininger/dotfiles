@@ -78,6 +78,10 @@ alias bsl="blue_steel_link"
 # Figma Types
 alias figtypes="npm install --save-dev @figma/plugin-typings"
 
+# NYT
+alias hdocs="yws hyphen-docs sb"
+alias pdocs="yws design-system-docs storybook"
+
 # VS Code
 alias co="code ."
 alias cor="code . -r"

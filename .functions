@@ -102,3 +102,9 @@ function fixn() {
   sudo codesign --force --sign - $(which node)
   sudo /usr/libexec/ApplicationFirewall/socketfilterfw --add $(which node)
 }
+
+# run script in context of workspace
+# e.g., yws hyphen sb
+yws () {
+    yarn workspace $1 $2
+}
