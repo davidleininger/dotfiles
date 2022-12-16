@@ -2,3 +2,5 @@
 node_modules
 git/vault/den/nytimes
 git/vault/github
+git/gh/config.yml
+git/gh/hosts.yml
