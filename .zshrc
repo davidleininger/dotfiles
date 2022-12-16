@@ -104,3 +104,7 @@ unsetopt PROMPT_SP
 export PATH=/Users/davidleininger/.fnm:$PATH
 eval "`fnm env`"
 # eval "$(fnm env --use-on-cd)"
+
+# puppeteer nonsense
+export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
+export PUPPETEER_EXECUTABLE_PATH=`which chromium`
