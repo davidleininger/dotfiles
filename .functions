@@ -108,3 +108,8 @@ function fixn() {
 yws () {
     yarn workspace $1 $2
 }
+
+# run stocks script
+function stocks() {
+    node ~/dev/nyt-stocks/index.js
+}
