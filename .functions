@@ -108,3 +108,22 @@ function fixn() {
 yws () {
     yarn workspace $1 $2
 }
+
+function stocks() {
+    node ~/dev/nyt-stocks/index.js
+}
+
+# Screenshot with Voice Over - defaut delay 10 seconds
+# e.g., voss 5 headings -c | delay = 5 seconds, filename is headings, -c sends the file to the clipboard
+function voss() {
+  local delay="${1:-10}"
+  local filename="${2:-VOscreenshot}"
+  local flags=$3
+  echo "get your screen ready..."
+  screencapture -T$delay $flags ~/Desktop/$filename.jpg
+  if [[ $flags =~ "c" ]]; then
+   echo "$filename was copied to your clipboard"
+  else
+    echo "$filename.jpg saved to desktop"
+  fi
+}
