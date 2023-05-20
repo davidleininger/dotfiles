@@ -17,10 +17,6 @@
     "command": "workbench.view.debug"
   },
   {
-    "key": "cmd+k cmd+x",
-    "command": "workbench.extensions.action.showInstalledExtensions"
-  },
-  {
     "key": "cmd+k cmd+b",
     "command": "workbench.action.toggleSidebarVisibility"
   },
@@ -326,5 +322,19 @@
     "key": "escape",
     "command": "notifications.hideToasts",
     "when": "notificationToastVisible"
+  },
+  {
+    "key": "cmd+k cmd+f",
+    "command": "workbench.view.extension.frontmatter-explorer"
+  },
+  {
+    "key": "cmd+k cmd+x",
+    "command": "workbench.view.extensions",
+    "when": "viewContainer.workbench.view.extensions.enabled"
+  },
+  {
+    "key": "shift+cmd+x",
+    "command": "-workbench.view.extensions",
+    "when": "viewContainer.workbench.view.extensions.enabled"
   }
 ]
