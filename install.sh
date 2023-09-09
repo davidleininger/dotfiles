@@ -7,8 +7,8 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 git clone https://github.com/paulirish/git-open ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/git-open
 
 # Remove old config files
-cd ~
-rm -rf ~/.config
+# cd ~
+# rm -rf ~/.config
 
 # got some things to do in dotfiles
 cd ~/dev/dotfiles
@@ -22,7 +22,9 @@ ln -sf "$DOTFILES_DIR/Brewfile" ~
 ln -sf "$DOTFILES_DIR/.gitconfig" ~
 ln -sf "$DOTFILES_DIR/.gitconfig-dl" ~
 ln -sf "$DOTFILES_DIR/.gitconfig-nyt" ~
-ln -sf "$DOTFILES_DIR/git" ~/.config
+ln -sf "$DOTFILES_DIR/git" ~/.config/git
+ln -sf "$DOTFILES_DIR/kitty" ~/.config/kitty
+ln -sf "$DOTFILES_DIR/karabiner.json" ~/.config/karabiner
 ln -sf "$DOTFILES_DIR/.hushlogin" ~
 ln -sf "$DOTFILES_DIR/.gitignore_global" ~
 ln -sf "$DOTFILES_DIR/.hyper.js" ~
