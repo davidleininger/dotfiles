@@ -126,4 +126,5 @@ function voss() {
   else
     echo "$filename.jpg saved to desktop"
   fi
+	say screenshot taken
 }
