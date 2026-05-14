@@ -14,6 +14,8 @@ brew "stow"
 brew "trash-cli"
 brew "yt-dlp"
 brew "zoxide"
+brew "zsh-autosuggestions"
+brew "zsh-syntax-highlighting"
 
 ## Apps
 cask "bettertouchtool"
