@@ -1,7 +1,7 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = """
-[ † ](bg:#343d46 fg:#ffffff)$directory$custom$nodejs$fill$time
+[ † ](bg:#343d46 fg:#ffffff)$directory${custom.git_ahead}${custom.git_behind}${custom.git_dirty}${custom.git_clean}$nodejs$fill$time
 $character"""
 
 [directory]
@@ -12,27 +12,35 @@ truncation_symbol = "…/"
 
 [custom.git_clean]
 command = "git branch --show-current"
-when = "git diff --quiet && git diff --cached --quiet && test -z \"$(git ls-files --others --exclude-standard)\""
+when = '[ -z "$(git status --porcelain 2>/dev/null)" ] && ! git rev-list @{u}..HEAD 2>/dev/null | grep -q . && ! git rev-list HEAD..@{u} 2>/dev/null | grep -q .'
+use_stdin = false
 style = "bg:#99c794 fg:#0f1c23"
 format = "[\uE0B0](fg:#5a9bcf bg:#99c794)[ $output ]($style)[\uE0B0](fg:#99c794)"
+shell = ["bash", "--noprofile", "--norc", "-c"]
 
 [custom.git_dirty]
 command = "git branch --show-current"
-when = "! git diff --quiet || ! git diff --cached --quiet || test -n \"$(git ls-files --others --exclude-standard)\""
+when = '[ -n "$(git status --porcelain 2>/dev/null)" ]'
+use_stdin = false
 style = "bg:#fac863 fg:#0f1c23"
 format = "[\uE0B0](fg:#5a9bcf bg:#fac863)[ $output ]($style)[\uE0B0](fg:#fac863)"
+shell = ["bash", "--noprofile", "--norc", "-c"]
 
 [custom.git_ahead]
 command = "git branch --show-current"
-when = "git status --porcelain=v1 --branch | grep -q '^## .*ahead'"
+when = '[ -z "$(git status --porcelain 2>/dev/null)" ] && git rev-list @{u}..HEAD 2>/dev/null | grep -q .'
+use_stdin = false
 style = "bg:#c594c5 fg:#0f1c23"
 format = "[\uE0B0](fg:#5a9bcf bg:#c594c5)[ $output ]($style)[\uE0B0](fg:#c594c5)"
+shell = ["bash", "--noprofile", "--norc", "-c"]
 
 [custom.git_behind]
 command = "git branch --show-current"
-when = "git status --porcelain=v1 --branch | grep -q '^## .*behind'"
+when = '[ -z "$(git status --porcelain 2>/dev/null)" ] && git rev-list HEAD..@{u} 2>/dev/null | grep -q .'
+use_stdin = false
 style = "bg:#ed6f7d fg:#0f1c23"
 format = "[\uE0B0](fg:#5a9bcf bg:#ed6f7d)[ $output ]($style)[\uE0B0](fg:#ed6f7d)"
+shell = ["bash", "--noprofile", "--norc", "-c"]
 
 [nodejs]
 symbol = " "
