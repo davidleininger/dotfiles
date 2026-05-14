@@ -37,6 +37,10 @@
     "command": "workbench.action.toggleActivityBarVisibility"
   },
   {
+    "key": "cmd+k cmd+i",
+    "command": "workbench.action.chat.open"
+  },
+  {
     "key": "cmd+k cmd+,",
     "command": "workbench.action.toggleStatusbarVisibility"
   },
@@ -115,7 +119,7 @@
   {
     "key": "cmd+l",
     "command": "editor.action.copyLinesDownAction",
-    "when": "editorTextFocus"
+    "when": "editorTextFocus && !editorReadonly"
   },
   {
     "key": "cmd+j",
@@ -336,29 +340,39 @@
     "key": "shift+cmd+x",
     "command": "-workbench.view.extensions",
     "when": "viewContainer.workbench.view.extensions.enabled"
-	},
-	{
-		"key": "cmd+k cmd+f",
-		"command": "workbench.action.experimental.quickTextSearch"
-	},
-	{
-		"key": "cmd+k cmd+v",
-		"command": "workbench.action.chat.open",
-		"when": "!chatSetupDisabled && !chatSetupHidden"
-	},
-	{
-		"key": "ctrl+cmd+i",
-		"command": "-workbench.action.chat.open",
-		"when": "!chatSetupDisabled && !chatSetupHidden"
-	},
-	{
-		"key": "cmd+k cmd+v",
-		"command": "workbench.panel.chat",
-		"when": "workbench.panel.chat.view.copilot.active"
-	},
-	{
-		"key": "ctrl+cmd+i",
-		"command": "-workbench.panel.chat",
-		"when": "workbench.panel.chat.view.copilot.active"
-	}
+  },
+  {
+    "key": "cmd+k cmd+v",
+    "command": "workbench.action.openGlobalKeybindings"
+  },
+  {
+    "key": "cmd+k cmd+s",
+    "command": "-workbench.action.openGlobalKeybindings"
+  },
+  {
+    "key": "cmd+k cmd+s",
+    "command": "workbench.action.files.saveWithoutFormatting"
+  },
+  {
+    "key": "cmd+k s",
+    "command": "-workbench.action.files.saveWithoutFormatting"
+  },
+  {
+    "key": "cmd+m cmd+l",
+    "command": "expandLineSelection",
+    "when": "textInputFocus"
+  },
+  {
+    "key": "cmd+l",
+    "command": "-expandLineSelection",
+    "when": "textInputFocus"
+  },
+  {
+    "key": "cmd+i",
+    "command": "composerMode.agent"
+  },
+  {
+    "key": "cmd+e",
+    "command": "composerMode.background"
+  }
 ]
