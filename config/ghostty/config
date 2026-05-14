@@ -1,0 +1,11 @@
+theme = cobalt-next
+font-size = 16
+font-feature = "-calt"
+font-feature = "-liga"
+font-feature = "-dlig"
+window-padding-x = 6
+mouse-hide-while-typing = true
+clipboard-read = "allow"
+macos-titlebar-style = "tabs"
+window-inherit-working-directory = false
+font-family = Operator Mono For Powerline

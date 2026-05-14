@@ -1,125 +1,225 @@
-# Dotfiles
+# dotfiles
 
-These are my dotfiles. It's for me, using my settings, and it helps me set up new machines for how I work. That said, I stole a lot of this from other people, so feel free to steal from me. I would, however, highly recommend forking this repo and changing my user name to yours to avoid any issues. That will also allow you to add your own customizations and remove any of mine that you don't like. Good luck!
+Personal dotfiles for macOS. Managed with [Stow](https://www.gnu.org/software/stow/), [Homebrew](https://brew.sh/), and [mise](https://mise.jdx.dev/).
 
-## Getting started
-Before we run the install and setup scripts, we need to take care of a few things. So that you can actually run these scripts.
+> A private companion repo (`dotfiles-private`) holds sensitive credentials, licensed fonts, and work-specific config. Clone both for a complete setup.
 
-> It's worth noting that this setup is for macOS only and assumes you're using bash or zsh to execute the scripts.
+---
 
-### Initial setup
-You need `git` in order to get settings and plugins.
+## Structure
+
+```
+dotfiles/
+  zsh/
+    .zshrc
+    .aliases
+    .functions
+    .hushlogin
+  git/
+    .gitconfig
+    .gitignore_global
+  config/
+    ghostty/
+      config
+      themes/
+        cobalt-next
+    karabiner/
+      karabiner.json
+    starship/
+      starship.toml
+  vscode/
+    keybindings.json
+  scripts/
+    getip
+    empty-trash
+  Brewfile
+  install.sh
+  .macos
+  README.md
+```
+
+---
+
+## Fresh Machine Setup
+
+### 1. Prerequisites
+
+Install Xcode CLI tools first. The `install.sh` script will prompt and exit if they're missing — just re-run after installation completes.
 
 ```bash
 xcode-select --install
 ```
 
-After that finishes, you need to run a few other scripts before we can do everything else.
+### 2. Clone both repos
 
 ```bash
-sudo mkdir -p /usr/local/{bin,lib,include,share}
-sudo chown -R $(whoami) /usr/local/{bin,lib,include,share}
+mkdir -p ~/dev
+git clone https://github.com/davidleininger/dotfiles ~/dev/dotfiles
+gh repo clone davidleininger/dotfiles-private ~/dev/dotfiles-private
 ```
 
-### 1Password (or something like it)
-A password manager is essential to running a machine. One it provided a solid level of security around your info, and two it just makes it easier to get set up. So, download your password manager of choice and sign in to make everything that follows easier.
+> Note: `gh` won't be available until after Homebrew runs. Clone the public repo with `git`, then authenticate `gh` after setup and clone the private repo.
 
-### Node
-Odds are you're going to need [Node.js](https://nodejs.org/en/download) on your machine. Odds are you're a web developer if you're looking at this. Please download and install [Node](https://nodejs.org/en/download) before continuing with the rest of this setup. I'm assuming that you're running the current LTS version or higher moving forward.
-
-### Clone this repo
-You'll need a cop of this repo locally on your machine. So now that you have `git`, let's clone some dotfiles. You've got two options here. First navigate to or make your development directory and then clone. For me, I keep everything in `/dev`:
+### 3. Run the install script
 
 ```bash
-mkdir dev
-cd dev
-git clone https://github.com/davidleininger/dotfiles.git
+cd ~/dev/dotfiles
+bash install.sh
 ```
 
-## Scripts
-Okay, time to really get the ball rolling with scripts. Let's talk about what it will do before we run it. Feel free to take a look in `install.sh` file, but we'll walk through it here.
+This will:
+- Install Homebrew if not present
+- Run `brew bundle` from the Brewfile
+- Stow all dotfiles to their correct locations
+- Apply macOS defaults via `.macos`
+- Install Node LTS via mise
+- Set zsh as the default shell
 
-First, we need to install `oh-my-zsh` and install some plugins (we already have them defined in our zshrc). We'll also make sure zsh is our default shell:
+### 4. Run private install
 
 ```bash
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-git clone https://github.com/paulirish/git-open ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/git-open
+# Personal machine
+bash ~/dev/dotfiles-private/install-private.sh
+
+# Work machine (also installs Brewfile.work)
+bash ~/dev/dotfiles-private/install-private.sh --work
 ```
 
-Then we'll move to the home directory. We need to get rid of any existing configuration files. Though if you have them you might want to store them somewhere else and bring them back after we're done. Ideally we don't have a ~/.config directory, but if so... you probably need to delete it.
+### 5. Manual installs
+
+These aren't available via Homebrew and need to be installed manually:
+
+| App | URL |
+|---|---|
+| 1Password | https://1password.com/downloads/mac/ |
+| Figma Beta | https://www.figma.com/beta |
+| Loopback | https://rogueamoeba.com/loopback/ |
+
+### 6. Authenticate
 
 ```bash
-cd ~
-rm -rf ~/.config
+gh auth login       # GitHub CLI
 ```
 
-Now we need to get [Homebrew](https://brew.sh/) up and running. If you already have it, you can run `brew update` instead of installing it. Install with this script:
+Then sign into Dropbox, Notion, Slack, and Spotify as needed.
+
+---
+
+## What's Installed
+
+### CLI Tools
+| Tool | Purpose |
+|---|---|
+| `bat` | Better `cat` with syntax highlighting |
+| `direnv` | Per-directory environment variables |
+| `ffmpeg` | Video/audio processing |
+| `gh` | GitHub CLI |
+| `git-lfs` | Git large file storage |
+| `jq` | JSON parsing and manipulation |
+| `mise` | Runtime version manager (Node, Python) |
+| `pnpm` | Fast, disk-efficient package manager |
+| `ripgrep` | Fast recursive search |
+| `starship` | Shell prompt |
+| `stow` | Symlink manager for dotfiles |
+| `trash-cli` | Safer `rm` — moves to Trash instead of deleting |
+| `yt-dlp` | YouTube and video downloader |
+| `zoxide` | Smarter `cd` with frecency |
+
+### Apps
+BetterTouchTool, Bruno, CleanShot, Deskpad, Dropbox, Elgato Wave Link, Ghostty, Kap, Karabiner-Elements, Keycastr, Notion, Polypane, Raycast, Slack, Spotify, Thaw, Visual Studio Code, Zoom
+
+### Mac App Store
+Aware, Boop, ColorSlurp, Get Plain Text, GetIpsum, Hand Mirror
+
+---
+
+## Stow Packages
+
+Stow mirrors each package folder into the target directory. Run from inside `~/dev/dotfiles`:
 
 ```bash
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+stow --restow --target="$HOME" zsh
+stow --restow --target="$HOME" git
+stow --restow --target="$HOME/.config" config
 ```
 
-You may or may not need to do this, but ever since switching to an M1 Mac, I've needed to add Homebrew to the PATH. If you're following along here, the Homebrew install will give the same info, but you'll need to run this:
+VS Code keybindings use a non-standard path and are handled via a manual symlink in `install.sh`.
+
+---
+
+## Runtime Management
+
+Node is managed via [mise](https://mise.jdx.dev/). After install:
 
 ```bash
-export PATH=/opt/homebrew/bin:$PATH
-export PATH=/opt/homebrew/sbin:$PATH
+mise install node@lts
+mise use --global node@lts
 ```
 
-Now, we'll use Homebrew Bundle to go through our Bundle file and install a bunch of stuff, but we need to let set up Homebrew to run the bundle.
+Per-project versions are set via `.mise.toml` or existing `.nvmrc` / `.node-version` files — mise reads all of them automatically.
+
+To add Python when needed:
 
 ```bash
-brew tap Homebrew/bundle
+mise install python@latest
+mise use --global python@latest
 ```
 
-Now that we've got Node and Homebrew up and running, we can install all of the things. First we'll install some global npm modules.
+---
+
+## Shell Prompt
+
+Prompt is powered by [Starship](https://starship.rs/) with a custom Cobalt Next theme. Config lives at `config/starship/starship.toml`.
+
+Two-line layout:
+```
+† ~/dev/dotfiles  main ±  ⬡ 22.13.1  09:41
+❯
+```
+
+- **Blue** — current directory
+- **Yellow** — dirty branch
+- **Green** — clean branch / Node version
+- **Purple** — branch ahead of remote
+- **Red** — branch behind remote
+
+---
+
+## Ghostty Theme
+
+A standalone Cobalt Next theme for [Ghostty](https://ghostty.org/) lives at `config/ghostty/themes/cobalt-next`. The main Ghostty config references it by name:
+
+```ini
+theme = cobalt-next
+```
+
+---
+
+## macOS Defaults
+
+`.macos` applies sensible defaults for Finder, Dock, keyboard, screenshots, and Safari. Run manually or via `install.sh`:
 
 ```bash
-npm i -g empty-trash-cli fkill-cli np trash-cli convert-color-cli yarn
+bash .macos
 ```
 
-Now we'll install all of the homebrew applications (even Mac App Store applications)
+Notable settings:
+- Dock auto-hides instantly
+- Screenshots save as PNG to Desktop
+- Finder defaults to Home directory
+- Fast keyboard repeat rate
+- Full keyboard access in dialogs
 
-```bash
-brew bundle
-```
+---
 
-Next we'll stay in the `dotfiles` directory because we've got some local dependencies to install.
+## Private Companion Repo
 
-```bash
-cd ~/dev/dotfiles && npm install
-```
+`dotfiles-private` holds everything that can't be public:
 
-### Install script
-That is a lot, but, honestly, it only takes a few minutes. If you want, you can run that entire script in order:
+- Licensed fonts (Operator Mono for Powerline)
+- Git identity configs (`.gitconfig-dl`, `.gitconfig-nyt`)
+- SSH config
+- Private environment variables and credentials
+- Work Brewfile (`Brewfile.work`)
 
-```bash
-sh ~/dev/dotfiles/install.sh
-```
-
-## What did the scripts do?
-
-## Additional setup
-Let's get this mac finished setting up. Here are some steps.
-
-### mac-setup.sh
-Using the `mac-setup.sh` script you can set your computer up to run just like I want. I think these are good Mac defaults, but you might not like it. Feel free to change it or and/remove stuff as you see fit.
-
-```bash
-sh ~/dev/dotfiles/mac-setup.sh
-```
-
-### Logins and applications
-- You should already have 1Password downloaded, now let's get the browser extension loaded up
-- Arc is your favorite browser, so get that bad boy and Logins
-- Login to github and do your auth diddy for `gh`
-- Download Raycast and get rid of spotlightå
-- You know you need Bartender
-- Karabiner
-- Don't forget your dev fonts (grab them from drobox)
-
-### Tweak your shortcuts
-- Copy screenshot to clipboard
-- Shottr shortcuts
+See the [dotfiles-private README](https://github.com/davidleininger/dotfiles-private) for setup instructions.

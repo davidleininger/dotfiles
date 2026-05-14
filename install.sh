@@ -1,60 +1,96 @@
 #!/bin/bash
+set -e
 
-# install zsh and zsh plugins
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-git clone https://github.com/paulirish/git-open ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/git-open
-
-# Remove old config files
-# cd ~
-# rm -rf ~/.config
-
-# got some things to do in dotfiles
-cd ~/dev/dotfiles
-
-# Get dotfiles installation directory
 DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-ln -sf "$DOTFILES_DIR/.aliases" ~
-ln -sf "$DOTFILES_DIR/.functions" ~
-ln -sf "$DOTFILES_DIR/Brewfile" ~
-ln -sf "$DOTFILES_DIR/.gitconfig" ~
-ln -sf "$DOTFILES_DIR/.gitconfig-dl" ~
-ln -sf "$DOTFILES_DIR/.gitconfig-nyt" ~
-ln -sf "$DOTFILES_DIR/git" ~/.config/git
-ln -sf "$DOTFILES_DIR/kitty" ~/.config/kitty
-ln -sf "$DOTFILES_DIR/karabiner.json" ~/.config/karabiner
-ln -sf "$DOTFILES_DIR/.hushlogin" ~
-ln -sf "$DOTFILES_DIR/.gitignore_global" ~
-ln -sf "$DOTFILES_DIR/.hyper.js" ~
-ln -sf "$DOTFILES_DIR/.zshrc" ~
-ln -sf "$DOTFILES_DIR/z.sh" ~
-ln -sf "$DOTFILES_DIR/leininger.zsh-theme" ~/.oh-my-zsh/custom/themes
-ln -sf "$DOTFILES_DIR/keybindings.json" ~/Library/Application\ Support/Code/User/keybindings.json
+echo "🚀 Starting machine setup..."
 
-# back to root
-cd ~
+# ── Xcode CLI Tools ───────────────────────────────────────────────────────────
+if ! xcode-select -p &>/dev/null; then
+  echo "Installing Xcode CLI tools..."
+  xcode-select --install
+  echo "Once Xcode CLI tools are installed, re-run this script."
+  exit 0
+fi
 
-# Get homebrew and bring that badboy in
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+# ── Homebrew ──────────────────────────────────────────────────────────────────
+if ! command -v brew &>/dev/null; then
+  echo "Installing Homebrew..."
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
 
-# Add homebrew to PATH
+# Add Homebrew to PATH for the rest of this script (Apple Silicon)
 export PATH=/opt/homebrew/bin:$PATH
 export PATH=/opt/homebrew/sbin:$PATH
 
-# Do the homebrew bundle stuff
-brew tap Homebrew/bundle
+echo "Running brew bundle..."
+brew bundle --file="$DOTFILES_DIR/Brewfile"
 
-# Install global npm modules that we'll need
-npm i -g empty-trash-cli fkill-cli np trash-cli convert-color-cli yarn
+# ── Stow dotfiles ─────────────────────────────────────────────────────────────
+echo "Stowing dotfiles..."
+cd "$DOTFILES_DIR"
 
-# install homebrew applications
-brew bundle
+stow --restow --target="$HOME" zsh
+stow --restow --target="$HOME" git
+stow --restow --target="$HOME/.config" config
 
-# finally go back to dotfiles and npm install
-cd ~/dev/dotfiles
-npm install
+# VS Code keybindings (non-standard path, manual symlink)
+VSCODE_USER="$HOME/Library/Application Support/Code/User"
+mkdir -p "$VSCODE_USER"
+ln -sf "$DOTFILES_DIR/vscode/keybindings.json" "$VSCODE_USER/keybindings.json"
 
-# reload zsh
-source ~/.zshrc
+echo "Dotfiles linked."
+
+# ── macOS defaults ────────────────────────────────────────────────────────────
+echo "Applying macOS defaults..."
+bash "$DOTFILES_DIR/.macos"
+
+# ── mise: Node ────────────────────────────────────────────────────────────────
+echo "Setting up mise..."
+eval "$(mise activate bash)"
+
+mise install node@lts
+mise use --global node@lts
+echo "Node $(node -v) ready."
+
+# Uncomment if you need Python on this machine:
+# mise install python@latest
+# mise use --global python@latest
+# echo "Python $(python --version) ready."
+
+# ── Global npm packages ───────────────────────────────────────────────────────
+echo "Updating npm..."
+npm install -g npm@latest
+# Add any globals here as needed
+
+# ── Shell ─────────────────────────────────────────────────────────────────────
+if [ "$SHELL" != "/bin/zsh" ]; then
+  echo "Setting zsh as default shell..."
+  chsh -s /bin/zsh
+fi
+
+# ── Private dotfiles ──────────────────────────────────────────────────────────
+PRIVATE_DIR="$HOME/dev/dotfiles-private"
+if [ -d "$PRIVATE_DIR" ]; then
+  echo "Found private dotfiles, running private install..."
+  bash "$PRIVATE_DIR/install-private.sh"
+else
+  echo ""
+  echo "⚠️  Private dotfiles not found. Clone and run manually:"
+  echo "     gh repo clone davidleininger/dotfiles-private ~/dev/dotfiles-private"
+  echo "     bash ~/dev/dotfiles-private/install-private.sh"
+fi
+
+echo ""
+echo "✅ Core setup complete."
+echo ""
+echo "⚠️  Manual installs required:"
+echo "  - 1Password:  https://1password.com/downloads/mac/"
+echo "  - Figma Beta: https://www.figma.com/beta"
+echo "  - Loopback:   https://rogueamoeba.com/loopback/"
+echo ""
+echo "Next steps:"
+echo "  - Open a new terminal to load your zsh config"
+echo "  - Sign into Dropbox, Notion, Slack, Spotify as needed"
+echo "  - On work machines: brew bundle --file=$HOME/dev/dotfiles-private/Brewfile.work"
+echo "  - Authenticate gh CLI: gh auth login"

@@ -1,0 +1,47 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = """
+† $directory$git_branch$git_status $nodejs$fill$time
+$character"""
+
+[directory]
+style = "bg:#5a9bcf fg:#0f1c23"
+format = "[ $path ]($style)[](fg:#5a9bcf bg:#fac863)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[git_branch]
+symbol = ""
+style = "bg:#fac863 fg:#0f1c23"
+format = "[ $symbol$branch ]($style)"
+
+[git_status]
+style = "bg:#fac863 fg:#0f1c23"
+format = "[$all_status$ahead_behind]($style)[](fg:#fac863)"
+conflicted = "="
+ahead = "⇡"
+behind = "⇣"
+diverged = "⇕"
+untracked = "?"
+modified = "±"
+staged = "+"
+deleted = "✘"
+stashed = "$"
+
+[nodejs]
+symbol = "⬡ "
+style = "fg:#99c794"
+format = "[ $symbol$version]($style)"
+
+[fill]
+symbol = " "
+
+[time]
+disabled = false
+style = "fg:#65737e"
+format = "[$time]($style)"
+time_format = "%H:%M"
+
+[character]
+success_symbol = "[❯](fg:#5fb3b3)"
+error_symbol = "[❯](fg:#ed6f7d)"
