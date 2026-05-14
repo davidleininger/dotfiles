@@ -1,8 +1,10 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = """
-[ † ](bg:#343d46 fg:#ffffff)$directory${custom.git_ahead}${custom.git_behind}${custom.git_dirty}${custom.git_clean}$nodejs$fill$time
+[ † ](bg:#343d46 fg:#ffffff)$directory${custom.dir_cap}${custom.git_ahead}${custom.git_behind}${custom.git_dirty}${custom.git_clean}$nodejs$fill$time
 $character"""
+
+add_newline = false
 
 [directory]
 style = "bg:#5a9bcf fg:#0f1c23"
@@ -10,9 +12,16 @@ format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
 
+[custom.dir_cap]
+when = '! git rev-parse --is-inside-work-tree 2>/dev/null | grep -q true'
+use_stdin = false
+shell = ["bash", "--noprofile", "--norc", "-c"]
+format = "[\uE0B0](fg:#5a9bcf)"
+command = "true"
+
 [custom.git_clean]
 command = "git branch --show-current"
-when = '[ -z "$(git status --porcelain 2>/dev/null)" ] && ! git rev-list @{u}..HEAD 2>/dev/null | grep -q . && ! git rev-list HEAD..@{u} 2>/dev/null | grep -q .'
+when = 'git rev-parse --is-inside-work-tree 2>/dev/null | grep -q true && [ -z "$(git status --porcelain 2>/dev/null)" ] && ! git rev-list @{u}..HEAD 2>/dev/null | grep -q . && ! git rev-list HEAD..@{u} 2>/dev/null | grep -q .'
 use_stdin = false
 style = "bg:#99c794 fg:#0f1c23"
 format = "[\uE0B0](fg:#5a9bcf bg:#99c794)[ $output ]($style)[\uE0B0](fg:#99c794)"
@@ -20,7 +29,7 @@ shell = ["bash", "--noprofile", "--norc", "-c"]
 
 [custom.git_dirty]
 command = "git branch --show-current"
-when = '[ -n "$(git status --porcelain 2>/dev/null)" ]'
+when = 'git rev-parse --is-inside-work-tree 2>/dev/null | grep -q true && [ -n "$(git status --porcelain 2>/dev/null)" ]'
 use_stdin = false
 style = "bg:#fac863 fg:#0f1c23"
 format = "[\uE0B0](fg:#5a9bcf bg:#fac863)[ $output ]($style)[\uE0B0](fg:#fac863)"
@@ -28,7 +37,7 @@ shell = ["bash", "--noprofile", "--norc", "-c"]
 
 [custom.git_ahead]
 command = "git branch --show-current"
-when = '[ -z "$(git status --porcelain 2>/dev/null)" ] && git rev-list @{u}..HEAD 2>/dev/null | grep -q .'
+when = 'git rev-parse --is-inside-work-tree 2>/dev/null | grep -q true && [ -z "$(git status --porcelain 2>/dev/null)" ] && git rev-list @{u}..HEAD 2>/dev/null | grep -q .'
 use_stdin = false
 style = "bg:#c594c5 fg:#0f1c23"
 format = "[\uE0B0](fg:#5a9bcf bg:#c594c5)[ $output ]($style)[\uE0B0](fg:#c594c5)"
@@ -36,7 +45,7 @@ shell = ["bash", "--noprofile", "--norc", "-c"]
 
 [custom.git_behind]
 command = "git branch --show-current"
-when = '[ -z "$(git status --porcelain 2>/dev/null)" ] && git rev-list HEAD..@{u} 2>/dev/null | grep -q .'
+when = 'git rev-parse --is-inside-work-tree 2>/dev/null | grep -q true && [ -z "$(git status --porcelain 2>/dev/null)" ] && git rev-list HEAD..@{u} 2>/dev/null | grep -q .'
 use_stdin = false
 style = "bg:#ed6f7d fg:#0f1c23"
 format = "[\uE0B0](fg:#5a9bcf bg:#ed6f7d)[ $output ]($style)[\uE0B0](fg:#ed6f7d)"

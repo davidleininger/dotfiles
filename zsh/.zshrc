@@ -27,6 +27,10 @@ unset file
 # ── Private env ────────────────────────────────────────────────────────────────
 [ -f "$HOME/.env" ] && source "$HOME/.env"
 
+# ── Ghostty cursor fix ────────────────────────────────────────────────────────
+zle-line-init() { echo -ne "\e[2 q" }
+zle -N zle-line-init
+
 # ── Tools ─────────────────────────────────────────────────────────────────────
 eval "$(zoxide init zsh)"
 eval "$(direnv hook zsh)"
