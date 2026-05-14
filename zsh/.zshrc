@@ -1,5 +1,6 @@
 # ── Path ──────────────────────────────────────────────────────────────────────
 export PATH="$HOME/.npm-global/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 
 # pnpm
 export PNPM_HOME="$HOME/Library/pnpm"

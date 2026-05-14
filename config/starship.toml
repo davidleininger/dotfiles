@@ -1,23 +1,23 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = """
-† $directory$git_branch$git_status $nodejs$fill$time
+[ † ](bg:#343d46 fg:#ffffff)$directory$git_branch$git_status$nodejs$fill$time
 $character"""
 
 [directory]
 style = "bg:#5a9bcf fg:#0f1c23"
-format = "[ $path ]($style)[](fg:#5a9bcf bg:#fac863)"
+format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
 
 [git_branch]
 symbol = ""
 style = "bg:#fac863 fg:#0f1c23"
-format = "[ $symbol$branch ]($style)"
+format = "[\uE0B0](fg:#5a9bcf bg:#fac863)[ $symbol$branch ]($style)"
 
 [git_status]
 style = "bg:#fac863 fg:#0f1c23"
-format = "[$all_status$ahead_behind]($style)[](fg:#fac863)"
+format = "[$all_status$ahead_behind]($style)[\uE0B0](fg:#fac863)"
 conflicted = "="
 ahead = "⇡"
 behind = "⇣"
@@ -29,9 +29,10 @@ deleted = "✘"
 stashed = "$"
 
 [nodejs]
-symbol = "⬡ "
+symbol = " "
 style = "fg:#99c794"
 format = "[ $symbol$version]($style)"
+detect_files = ["package.json", ".nvmrc", ".node-version"]
 
 [fill]
 symbol = " "
