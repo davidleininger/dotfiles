@@ -32,3 +32,7 @@ eval "$(zoxide init zsh)"
 eval "$(direnv hook zsh)"
 eval "$(mise activate zsh)"
 eval "$(starship init zsh)"
+
+# ── Plugins ───────────────────────────────────────────────────────────────────
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
