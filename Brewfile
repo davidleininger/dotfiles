@@ -34,11 +34,10 @@ cask "raycast"
 cask "slack"
 cask "spotify"
 cask "thaw"
+cask "there"
 cask "visual-studio-code"
 
 ## Mac App Store
-mas "Aware", id: 1082170746
-mas "Boop", id: 1518425043
 mas "ColorSlurp", id: 1287239339
 mas "Get Plain Text", id: 508368068
 mas "Hand Mirror", id: 1502839586
