@@ -1,92 +1,74 @@
+# ── Navigation
 alias k="clear"
 alias jk="clear"
 alias x="exit"
 alias q="exit"
 alias :q="exit"
-alias ltr="ls -ltr"
-alias vi=vim # prefer vim to vi
-alias rm=trash # safer deleting using trash-cli
-alias please=sudo # nicer sudo
-alias ip="getip" # shorter alias for getip() function in .functions setup
-alias bbd="brew bundle dump --force" # homebrew bundle
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias ......="cd ../../../../.."
-alias c-c="convert-color"
-alias cat=bat
 
-# Suffixes are rad
-alias -s {html,css,js}=code
-
-# Git
-alias g="git"
-alias gmm="merge_default"
-alias gf="git fetch --all --prune"
-alias gl="git pull"
-alias gd="git diff"
-alias ga="git add"
-alias gp="git push"
-alias gpo="git push origin"
-alias gbx="git branch -D"
-alias gco="git checkout"
-alias gbc="git checkout -b"
-alias gcm="git_checkout_default_branch"
-alias gpm="git_pull_origin_default_branch"
-alias glm="git_checkout_default_branch_and_pull"
-alias glmm="pull_and_merge_default"
-alias gcam="git commit -am"
-alias gcmsg="git commit --message"
-alias gs="git status"
-alias gba="git branch --all"
-alias glg="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --all"
-alias gconflicts="git diff --name-only --diff-filter=U"
-alias gpub="publish_current_branch"
-alias gpull="pull_origin_current_branch"
-alias gbam="delete_local_merged_branches"
-alias gbamr="delete_remote_merged_branches"
-alias gclean="delete_local_merged_branches && delete_remote_merged_branches"
-alias gopen="git open"
-
-# NPM
-# alias ni="npm install"
-alias r="npm run"
-# alias ya="yarn add"
-alias use_npm="npm set registry https://registry.npmjs.org/ && npm get registry"
-alias use_wwt="npm set registry https://npm.wwt.com/ && npm get registry"
-
-# Netlify
-alias net="netlify"
-alias nd="netlify dev"
-
-# start screensaver
-alias afk="open -a /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app"
-
-# run teams/save battery
-alias teams="/Applications/Microsoft\ Teams.app/Contents/MacOS/Teams --disable-gpu &"
-
-# youtube-dl as mp4
-alias yt4="youtube-dl -f mp4"
-
-# kill port
-alias kp="kill_port"
-
-# Blue Steel at WWT
-alias bsl="blue_steel_link"
-
-# Figma Types
-alias figtypes="npm install --save-dev @figma/plugin-typings"
-
-# NYT
-alias hdocs="yws hyphen-docs sb"
-alias pdocs="yws design-system-docs storybook"
-
-# VS Code
-alias co="code ."
-alias cor="code . -r"
-
-#zsh
+# ── Shell
 alias resource="source ~/.zshrc"
 alias reload="source ~/.zshrc"
 alias aa="cat ~/.aliases"
+alias please=sudo
+alias ltr="ls -ltr"
+alias cat=bat
+
+# ── macOS
+alias afk="open -a /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app"
+alias rm=trash
+alias empty-trash='/bin/rm -rf ~/.Trash/* && echo "Trash emptied."'
+alias getip='ip=$(ipconfig getifaddr utun0 2>/dev/null || ipconfig getifaddr en0) && echo $ip | pbcopy && echo "\n  $ip\n  (copied to clipboard)\n"'
+
+# ── Homebrew
+alias bbd="brew bundle dump --force --file=$HOME/dev/dotfiles/Brewfile"
+
+# ── Git
+alias g="git"
+alias ga="git add"
+alias gcam="git commit -am"
+alias gcmsg="git commit --message"
+alias gco="git checkout"
+alias gbc="git checkout -b"
+alias gcm="git_checkout_default_branch"
+alias gd="git diff"
+alias gf="git fetch --all --prune"
+alias gl="git pull"
+alias glg="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --all"
+alias glm="git_checkout_default_branch_and_pull"
+alias glmm="pull_and_merge_default"
+alias gmm="merge_default"
+alias gopen="git open"
+alias gp="git push"
+alias gpo="git push origin"
+alias gpm="git_pull_origin_default_branch"
+alias gpub="publish_current_branch"
+alias gpull="pull_origin_current_branch"
+alias gs="git status"
+alias gba="git branch --all"
+alias gbam="delete_local_merged_branches"
+alias gbamr="delete_remote_merged_branches"
+alias gbx="git branch -D"
+alias gclean="delete_local_merged_branches && delete_remote_merged_branches"
+alias gconflicts="git diff --name-only --diff-filter=U"
+
+# ── Node / npm
+alias r="npm run"
+alias use_npm="npm set registry https://registry.npmjs.org/ && npm get registry"
+
+# ── VS Code
+alias co="code ."
+alias cor="code . -r"
+
+# ── Netlify
+alias net="netlify"
+alias nd="netlify dev"
+
+# ── Tools
+alias yt4="yt-dlp -f mp4"
+alias kp="kill_port"
+alias kill_port="kill_port"
