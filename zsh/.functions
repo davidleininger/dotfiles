@@ -1,6 +1,6 @@
 # Git stuff
 function git_current_branch() {
-  if ! git rev-parse 2> /dev/null; then
+  if ! git rev-parse --is-inside-work-tree 2> /dev/null; then
     print "$0: not a repository: $PWD" >&2
     return 1
   fi
@@ -15,7 +15,7 @@ function git_current_branch() {
   fi
 }
 
-function git_default_branch(){
+function git_default_branch() {
   git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'
 }
 
@@ -67,50 +67,25 @@ function delete_remote_merged_branches() {
   local default_branch="$(git_default_branch)"
   git fetch origin
   git remote prune origin
-  git branch -r --merged origin/$default_branch | awk -F'/' '/^ *origin/{if(!match($0, /(>|$default_branch)/)){print $2}}' | xargs git push origin --delete
-}
-
-# get current IP address
-function getip() {
-  node ~/dev/dotfiles/scripts/getIp.js
+  git branch -r --merged origin/$default_branch \
+    | awk -v db="$default_branch" -F'/' '/^ *origin/{if(!match($0, /(>)/) && !match($0, db)){print $2}}' \
+    | xargs git push origin --delete
 }
 
 # Mac stuff
-kill_port() {
-  lsof -nti:“$1” | xargs kill -9
-  Echo “$1 killed”
-}
-
-# Blue Steel Fun for WWT
-blue_steel_link() {
-  yarn link @blue-steel/$1
+function kill_port() {
+  lsof -nti:"$1" | xargs kill -9
+  echo "$1 killed"
 }
 
 # I hate remembering syntax for copying to clipboard
 function copy() {
-  pbcopy < $1; echo "$(tput setaf 2)Contents of $(tput setaf 5)${1} $(tput setaf 2)copied to clipboard!"
-}
-
-# empty the trash
-function dump() {
-  node ~/dev/dotfiles/scripts/emptyTrash.js
-}
-
-# fix n notifications
-function fixn() {
-  sudo /usr/libexec/ApplicationFirewall/socketfilterfw --remove $(which node)
-  sudo codesign --force --sign - $(which node)
-  sudo /usr/libexec/ApplicationFirewall/socketfilterfw --add $(which node)
-}
-
-# run script in context of workspace
-# e.g., yws hyphen sb
-yws () {
-    yarn workspace $1 $2
-}
-
-function stocks() {
-    node ~/dev/nyt-stocks/index.js
+  if [[ ! -f "$1" ]]; then
+    echo "$(tput setaf 1)Error: file '${1}' not found."
+    return 1
+  fi
+  pbcopy < $1
+  echo "$(tput setaf 2)Contents of $(tput setaf 5)${1} $(tput setaf 2)copied to clipboard!"
 }
 
 # Voice Over Screenshot (voss) - default delay 10 seconds
@@ -121,7 +96,7 @@ function stocks() {
 # e.g., voss | 10 seconds, filename = VOscreenshot, no flags
 # e.g., voss 5 headings -c | delay = 5 seconds, filename is headings, -c sends the file to the clipboard
 function voss() {
-	setopt LOCAL_OPTIONS NO_NOTIFY NO_MONITOR
+  setopt LOCAL_OPTIONS NO_NOTIFY NO_MONITOR
   local delay="${1:-10}"
   local filename="VOscreenshot"
   local flags=""
@@ -148,6 +123,7 @@ function voss() {
     for i in $(seq "$delay" -1 1); do
       say "$i" &
       sleep 1
+      wait
     done
   fi
 
