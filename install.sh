@@ -28,6 +28,7 @@ brew bundle --file="$DOTFILES_DIR/Brewfile"
 
 # ── Stow dotfiles ─────────────────────────────────────────────────────────────
 echo "Stowing dotfiles..."
+mkdir -p "$HOME/.config"
 cd "$DOTFILES_DIR"
 
 stow --restow --target="$HOME" zsh
