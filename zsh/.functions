@@ -88,6 +88,11 @@ function copy() {
   echo "$(tput setaf 2)Contents of $(tput setaf 5)${1} $(tput setaf 2)copied to clipboard!"
 }
 
+# I miss take from oh my zsh, so I made my own version of it
+function take() {
+  mkdir -p "$1" && cd "$1"
+}
+
 # Voice Over Screenshot (voss) - default delay 10 seconds
 # command: voss
 # argument 1: delay in seconds (default 10)
