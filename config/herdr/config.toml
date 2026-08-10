@@ -1,0 +1,18 @@
+onboarding = false
+
+[ui]
+show_agent_labels_on_pane_borders = false
+copy_on_select = false
+
+[theme]
+name = "terminal"
+
+# Derived from the cobalt-next Ghostty/kitty theme (config/ghostty/themes/cobalt-next)
+# so Herdr matches the rest of the terminal environment.
+[theme.custom]
+accent      = "#5a9bcf"  # url_color / blue — active tab bg, dropdown selection bg
+panel_bg    = "#0f1c23"  # background — active tab text, dropdown text, main bg
+surface0    = "#343d46"  # color0 (black) — inactive tab background
+surface_dim = "#1b2b34"  # tab_bar_background — shared: borders + active session bg
+overlay0    = "#65737e"  # color8 (bright black) — sidebar section labels, menu links
+subtext0    = "#5a9bcf"  # url_color / blue — sidebar text, inactive sessions
