@@ -27,13 +27,7 @@ echo "Running brew bundle..."
 brew bundle --file="$DOTFILES_DIR/Brewfile"
 
 # ── Stow dotfiles ─────────────────────────────────────────────────────────────
-echo "Stowing dotfiles..."
-mkdir -p "$HOME/.config"
-cd "$DOTFILES_DIR"
-
-stow --restow --target="$HOME" zsh
-stow --restow --target="$HOME" git
-stow --restow --target="$HOME/.config" config
+bash "$DOTFILES_DIR/restow.sh"
 
 # VS Code keybindings (non-standard path, manual symlink)
 VSCODE_USER="$HOME/Library/Application Support/Code/User"

@@ -23,8 +23,12 @@ dotfiles/
       config
       themes/
         cobalt-next
+    herdr/
+      config.toml
     karabiner/
       karabiner.json
+    mise/
+      config.toml
     starship/
       starship.toml
   vscode/
@@ -135,13 +139,24 @@ Aware, Boop, ColorSlurp, Get Plain Text, GetIpsum, Hand Mirror
 
 ## Stow Packages
 
-Stow mirrors each package folder into the target directory. Run from inside `~/dev/dotfiles`:
+Stow mirrors each package folder into the target directory. On a machine that's already set up, pull the latest changes and re-link everything with:
+
+```bash
+cd ~/dev/dotfiles
+bash restow.sh
+```
+
+`restow.sh` just runs:
 
 ```bash
 stow --restow --target="$HOME" zsh
 stow --restow --target="$HOME" git
 stow --restow --target="$HOME/.config" config
 ```
+
+`install.sh` calls this same script, so there's one source of truth for the stow commands.
+
+Note: `--restow` fails if a target path already exists as a real file/directory instead of a symlink (e.g. a config file that predates being added to this repo). Resolve the conflict — move the real file's contents into the matching path under `dotfiles/config/` (or delete it if it's just a stale copy) — then re-run `restow.sh`.
 
 VS Code keybindings use a non-standard path and are handled via a manual symlink in `install.sh`.
 
