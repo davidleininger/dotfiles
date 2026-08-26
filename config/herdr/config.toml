@@ -16,3 +16,8 @@ surface0    = "#343d46"  # color0 (black) — inactive tab background
 surface_dim = "#1b2b34"  # tab_bar_background — shared: borders + active session bg
 overlay0    = "#65737e"  # color8 (bright black) — sidebar section labels, menu links
 subtext0    = "#5a9bcf"  # url_color / blue — sidebar text, inactive sessions
+
+# herdr 0.8.x moved sidebar rows to dedicated tokens (no longer derived from
+# surface_dim/accent), so they need explicit values to stay on cobalt-next.
+active_row_bg = "#1b2b34"  # tab_bar_background — active Space / focused Agent row
+selection_bg  = "#343d46"  # color0 (black) — Navigate-mode cursor row, one step lighter
