@@ -9,6 +9,7 @@ shell-integration-features = path,ssh-env,ssh-terminfo,sudo,title
 cursor-style = block
 cursor-style-blink = false
 clipboard-read = "allow"
+copy-on-select = false
 macos-titlebar-style = "tabs"
 window-inherit-working-directory = false
 font-family = OperatorMono Nerd Font Mono

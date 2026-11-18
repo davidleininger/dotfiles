@@ -5,6 +5,7 @@ format = """
 $character"""
 
 add_newline = false
+command_timeout = 2000
 
 [directory]
 style = "bg:#5a9bcf fg:#0f1c23"
